@@ -22,7 +22,7 @@ variables:
     helmGitCredentials:  roto-rooter-git-hub-account
     helmCredentials: config_dev_$(regionCode)
 
-    helmConfigName: $(kubernetesNamespac)-$(regionCode)-values
+    helmConfigName: $(kubernetesNamespace)-$(regionCode)-values
 
     dockerRegistry: https://registry.hub.docker.com
 
