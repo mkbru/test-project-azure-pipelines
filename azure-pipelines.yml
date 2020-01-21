@@ -16,7 +16,7 @@ steps:
 - script: ls
   displayName: 'show folder contents'
 
-- script: |
+- bash: |
     cd app-server
     cat Dockerfile
     echo Build Image
