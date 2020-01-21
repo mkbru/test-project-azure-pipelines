@@ -14,9 +14,30 @@ parameters:
   type: string
 
 variables:
-  template: myvariabletemplate.yml
+    baseImageVersion: "2.0.0"
+    environment: "dev" 
+    regionCode: 'cu'  
+
+    dockerHubRepositoryName: rotorooter
+
+    kubernetesNamespace: development
+
+    helmRepository: https://github.com/jpaynerrsc/rotorooter-infrastructure-
+    helmGitCredentials:  roto-rooter-git-hub-account
+    helmCredentials: "config_dev_${{regionCode}}"
+
+    helmConfigName: $(kubernetesNamespac)-$(regionCode)-values
+
+    dockerRegistry: https://registry.hub.docker.com
+
+    imageVersion: 
 
 steps:
+- bash: |
+    echo $(helmRepositoryName)
+    echo $(helmConfigName)
+  displayName: 'var testing'
+
 - script: echo Hello, world!
   displayName: 'Run a one-line script'
 
