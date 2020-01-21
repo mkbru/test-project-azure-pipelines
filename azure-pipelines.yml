@@ -10,7 +10,9 @@ pool:
   vmImage: 'ubuntu-latest'
 
 parameters:
-  environment: 
+  name: environment
+  type: string
+  default: dev 
 
 variables:
   environment: 
