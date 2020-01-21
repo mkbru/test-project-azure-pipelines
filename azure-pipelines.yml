@@ -9,10 +9,6 @@ trigger:
 pool:
   vmImage: 'ubuntu-latest'
 
-parameters:
-  name: environment
-  type: string
-
 variables:
     baseImageVersion: "2.0.0"
     environment: "dev" 
