@@ -14,7 +14,7 @@ parameters:
   type: string
 
 variables:
-  name: env
+  template: myvariabletemplate.yml
 
 steps:
 - script: echo Hello, world!
