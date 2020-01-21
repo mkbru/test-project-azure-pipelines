@@ -14,7 +14,7 @@ parameters:
   type: string
 
 variables:
-  environment: 
+  name: env
 
 steps:
 - script: echo Hello, world!
