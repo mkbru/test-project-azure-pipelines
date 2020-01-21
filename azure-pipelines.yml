@@ -20,7 +20,7 @@ variables:
 
     helmRepository: https://github.com/jpaynerrsc/rotorooter-infrastructure-
     helmGitCredentials:  roto-rooter-git-hub-account
-    helmCredentials: "config_dev_${{regionCode}}"
+    helmCredentials: config_dev_$(regionCode)
 
     helmConfigName: $(kubernetesNamespac)-$(regionCode)-values
 
