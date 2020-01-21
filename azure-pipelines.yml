@@ -12,7 +12,6 @@ pool:
 parameters:
   name: environment
   type: string
-  default: dev 
 
 variables:
   environment: 
