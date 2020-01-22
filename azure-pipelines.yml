@@ -22,16 +22,18 @@ stages:
 - stage: buildAndPushContainers
 
   jobs:
-  - job: getVersion
+  - job: vars
     steps:
+# Create a variable
     - bash: |
-        imageVersion=`git rev-parse --short HEAD`
-  
-  - job: printImageVersion
-    dependsOn: getVersion
-    steps:
-    - bash: 
-        echo $(imageVersion)
+        echo "##vso[task.setvariable variable=sauce]crushed tomatoes"
+
+    # Use the variable
+    # "$(sauce)" is replaced by the contents of the `sauce` variable by Azure Pipelines
+    # before handing the body of the script to the shell.
+    - bash: |
+        echo my pipeline variable is $(sauce)
+
     
 
   # - job: buildAndPushRRAppServer
