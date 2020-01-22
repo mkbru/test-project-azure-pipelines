@@ -23,9 +23,7 @@ variables:
 jobs:
 - job: vars
   steps:
-  -  bash: |
-      echo $(GitVersion.SemVer)
-      echo $(Build.SourceVersion)
+  -  script: |
       set TestVar=$(Build.SourceVersion)
       set MyCustomVar= %TestVar:~0,7%
       echo %MyCustomVar%
