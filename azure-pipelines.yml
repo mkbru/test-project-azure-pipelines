@@ -17,16 +17,16 @@ variables:
 - name: helmConfigName
   value: $(kubernetesNamespace)-$(regionCode)-values
 
-stages:
-- stage: buildAndPushContainers
+# stages:
+# - stage: buildAndPushContainers
 
-  jobs:
-  - job: vars
-    variables: 
-      imageVersion: git rev-parse --short HEAD
-    steps:
-      - bash: 
-          echo $(imageVersion)
+jobs:
+- job: vars
+  variables: 
+    imageVersion: git rev-parse --short HEAD
+  steps:
+    - bash: 
+        echo $(imageVersion)
 
     
 
