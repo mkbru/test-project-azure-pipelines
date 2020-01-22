@@ -24,7 +24,7 @@ stages:
     - job: buildAndPushRRAppServer
       steps:
       - bash: |
-          imageVersion=$(Build.SourceVersion) | cut -c1-8
+          imageVersion=$(Build.SourceVersion)
           echo dockerHubRepositoryName = $(dockerHubRepositoryName)
           git rev-parse --short HEAD
           echo building image $(imageVersion)
