@@ -3,20 +3,70 @@
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
 
-trigger:
-- master
+#trigger:
+#- master 
 
 pool:
   vmImage: 'ubuntu-latest'
 
-steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
+variables:
+- group: dev-cu-vars
+- group: common-pipeline-vars
+- name: kubernetesNamespace
+  value: development
+- name: helmConfigName
+  value: $(kubernetesNamespace)-$(regionCode)-values
 
-- script: ls
-  displayName: 'show folder contents'
+stages:
+- stage: buildAndPushContainers
 
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+  jobs:    
+    - job: buildAndPushRRAppServer
+      steps:
+      - bash: |
+          # imageVersion=$(Build.SourceVersion)
+          # echo dockerHubRepositoryName = $(dockerHubRepositoryName)
+          # git rev-parse --short HEAD
+          # echo building image $imageVersion
+          # echo pushing docker image to repo
+          echo pwd
+          pwd
+          echo ls
+          ls
+          
+      # - task: Docker@2
+      #   inputs:
+      #     containerRegistry: 'rr-dockerhub'
+      #     repository: 'rotorooter/rr-app-server'
+      #     command: 'build'
+      #     Dockerfile: '**/rr-app-server/Dockerfile'
+      #     tags: '$(Build.SourceVersion)'
+
+        displayName: 'build and push rr-app-server'
+
+    # - job: buildAndPushRRAdminCMS
+    #   steps:
+    #   - bash: |
+    #       echo dockerHubRepositoryName = $(dockerHubRepositoryName)
+    #       git rev-parse --short HEAD
+    #       echo building docker image $(Build.SourceVersion) | cut -c1-8
+    #       echo pushing docker image to repo
+    #     displayName: 'build and push rr-admin-cms'
+
+    # - job: buildAndPushRRCloudNativeWeb
+    #   steps:
+    #   - bash: |
+    #       echo dockerHubRepositoryName = $(dockerHubRepositoryName)
+    #       git rev-parse --short HEAD
+    #       echo building docker image $(Build.SourceVersion) | cut -c1-8
+    #       echo pushing docker image to repo
+    #     displayName: 'build and push rr-cloud-native-web'
+
+    # - job: buildAndPushRRContentLayer
+    #   steps:
+    #   - bash: |
+    #       echo dockerHubRepositoryName = $(dockerHubRepositoryName)
+    #       git rev-parse --short HEAD
+    #       echo building docker image $(Build.SourceVersion) | cut -c1-8
+    #       echo pushing docker image to repo
+    #     displayName: 'build and push rr-content-layer'
