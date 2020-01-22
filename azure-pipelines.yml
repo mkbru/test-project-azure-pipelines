@@ -22,17 +22,11 @@ stages:
 
   jobs:
   - job: vars
+    variables: 
+      imageVersion: git rev-parse --short HEAD
     steps:
-    - task: Bash@3
-      inputs:
-        targetType: 'inline'
-        script: 'git rev-parse --short HEAD'
-
-    # Use the variable
-    # "$(sauce)" is replaced by the contents of the `sauce` variable by Azure Pipelines
-    # before handing the body of the script to the shell.
-    - bash: |
-        echo Bash@3
+      - bash: 
+          echo $(imageVersion)
 
     
 
