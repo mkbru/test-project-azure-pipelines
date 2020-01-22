@@ -19,7 +19,7 @@ variables:
   value: $(kubernetesNamespace)-$(regionCode)-values
 
 stages:
-- stage: build and push containers
+- stage: buildAndPushContainers
 
   jobs:
   - job: buildAndPushRRAppServer
