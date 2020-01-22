@@ -24,6 +24,7 @@ jobs:
 - job: vars
   steps:
   -  bash: |
+      echo $(GitVersion.ShortSha)
       echo $(Build.SourceVersion)
       set TestVar=$(Build.SourceVersion)
       set MyCustomVar= %TestVar:~0,7%
