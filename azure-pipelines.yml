@@ -25,7 +25,7 @@ stages:
   - job: getVersion
     steps:
     - bash: |
-        imageVersion = git rev-parse --short HEAD
+        imageVersion=`git rev-parse --short HEAD`
   
   - job: printImageVersion
     dependsOn: getVersion
