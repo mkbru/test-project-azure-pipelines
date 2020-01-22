@@ -24,8 +24,13 @@ stages:
   jobs:
   - job: getVersion
     steps:
-    - bash: echo '#vso[task.setvariable variable=imageVersion]git rev-parse --short HEAD'
-    - bash: echo imageVersion $imageVersion
+    - bash: |
+        imageVersion = git rev-parse --short HEAD
+  
+  - job: printImageVersion
+    steps:
+    - bash: 
+        echo $(imageVersion)
     
 
   # - job: buildAndPushRRAppServer
