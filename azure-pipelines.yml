@@ -31,29 +31,29 @@ stages:
           echo pushing docker image to repo
         displayName: 'build and push rr-app-server'
 
-    - job: buildAndPushRRAdminCMS
-      steps:
-      - bash: |
-          echo dockerHubRepositoryName = $(dockerHubRepositoryName)
-          git rev-parse --short HEAD
-          echo building docker image $(Build.SourceVersion) | cut -c1-8
-          echo pushing docker image to repo
-        displayName: 'build and push rr-admin-cms'
+    # - job: buildAndPushRRAdminCMS
+    #   steps:
+    #   - bash: |
+    #       echo dockerHubRepositoryName = $(dockerHubRepositoryName)
+    #       git rev-parse --short HEAD
+    #       echo building docker image $(Build.SourceVersion) | cut -c1-8
+    #       echo pushing docker image to repo
+    #     displayName: 'build and push rr-admin-cms'
 
-    - job: buildAndPushRRCloudNativeWeb
-      steps:
-      - bash: |
-          echo dockerHubRepositoryName = $(dockerHubRepositoryName)
-          git rev-parse --short HEAD
-          echo building docker image $(Build.SourceVersion) | cut -c1-8
-          echo pushing docker image to repo
-        displayName: 'build and push rr-cloud-native-web'
+    # - job: buildAndPushRRCloudNativeWeb
+    #   steps:
+    #   - bash: |
+    #       echo dockerHubRepositoryName = $(dockerHubRepositoryName)
+    #       git rev-parse --short HEAD
+    #       echo building docker image $(Build.SourceVersion) | cut -c1-8
+    #       echo pushing docker image to repo
+    #     displayName: 'build and push rr-cloud-native-web'
 
-    - job: buildAndPushRRContentLayer
-      steps:
-      - bash: |
-          echo dockerHubRepositoryName = $(dockerHubRepositoryName)
-          git rev-parse --short HEAD
-          echo building docker image $(Build.SourceVersion) | cut -c1-8
-          echo pushing docker image to repo
-        displayName: 'build and push rr-content-layer'
+    # - job: buildAndPushRRContentLayer
+    #   steps:
+    #   - bash: |
+    #       echo dockerHubRepositoryName = $(dockerHubRepositoryName)
+    #       git rev-parse --short HEAD
+    #       echo building docker image $(Build.SourceVersion) | cut -c1-8
+    #       echo pushing docker image to repo
+    #     displayName: 'build and push rr-content-layer'
