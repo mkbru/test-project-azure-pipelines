@@ -35,7 +35,7 @@ stages:
           containerRegistry: 'rr-dockerhub'
           repository: 'rotorooter/rr-app-server'
           command: 'build'
-          Dockerfile: '/app-server/Dockerfile'
+          Dockerfile: '**/app-server/Dockerfile'
           tags: '$(Build.SourceVersion)'
 
         displayName: 'build app-server'
