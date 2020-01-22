@@ -23,10 +23,10 @@ variables:
 jobs:
 - job: vars
   steps:
-  -  script: |
-      set TestVar=$(Build.SourceVersion)
-      set MyCustomVar= %TestVar:~0,7%
-      echo %MyCustomVar%
+  -  bash: |
+      echo $(Build.SourceVersion)
+      TestVar=$(Build.SourceVersion)
+      echo $TestVar
   displayName: 'vars'
 
 
