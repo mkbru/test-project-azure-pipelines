@@ -22,11 +22,9 @@ variables:
 
 jobs:
 - job: vars
-  variables: 
-    imageVersion: git rev-parse --short HEAD
   steps:
     - bash: 
-        echo $(imageVersion)
+        echo $(Build.SourceVersion)
 
     
 
