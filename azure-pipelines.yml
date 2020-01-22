@@ -24,9 +24,7 @@ jobs:
 - job: vars
   steps:
   -  bash: |
-      echo $(Build.SourceVersion)
-      TestVar=$(Build.SourceVersion)
-      echo $TestVar
+      echo $(Build.SourceVersion) | cut -c1-8
   displayName: 'vars'
 
 
