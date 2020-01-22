@@ -28,6 +28,7 @@ stages:
         imageVersion = git rev-parse --short HEAD
   
   - job: printImageVersion
+    dependsOn: getVersion
     steps:
     - bash: 
         echo $(imageVersion)
