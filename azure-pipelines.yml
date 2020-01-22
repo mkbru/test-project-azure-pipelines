@@ -23,11 +23,15 @@ variables:
 jobs:
 - job: vars
   steps:
-    - bash: 
-        echo $(Build.SourceVersion)
+  -  bash: |
+      set  TestVar=$(Build.SourceVersion)
+      echo $(Build.SourceVersion)
+      set MyCustomVar= %TestVar:~0,7%
+      echo %MyCustomVar%
+  displayName: 'vars'
+
 
     
-
   # - job: buildAndPushRRAppServer
   #   steps:
   #   - bash: |
