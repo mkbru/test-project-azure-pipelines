@@ -17,30 +17,14 @@ variables:
 - name: helmConfigName
   value: $(kubernetesNamespace)-$(regionCode)-values
 
+
 steps:
 
 - bash: |
-    echo dockerHubRepositoryName -> $(dockerHubRepositoryName)
-    echo helmRepository -> $(helmRepository)
-    echo helmGitCredentials -> $(helmGitCredentials)
-    echo dockerRegistry -> $(dockerRegistry)
-    echo helmConfigName -> $(helmConfigName)
+    echo dockerHubRepositoryName $(dockerHubRepositoryName)
+    echo helmRepository $(helmRepository)
+    echo helmGitCredentials $(helmGitCredentials)
+    echo dockerRegistry $(dockerRegistry)
+    echo helmConfigName $(helmConfigName)
   displayName: 'var tests'
 
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
-
-- script: ls
-  displayName: 'show folder contents'
-
-- bash: |
-    cd app-server
-    cat Dockerfile
-    echo Build Image
-    echo Push Image to Repo
-  displayName: 'build app-server'
-
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
