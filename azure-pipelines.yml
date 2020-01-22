@@ -27,7 +27,7 @@ stages:
           imageVersion=$(Build.SourceVersion)
           echo dockerHubRepositoryName = $(dockerHubRepositoryName)
           git rev-parse --short HEAD
-          echo building image $(imageVersion)
+          echo building image $imageVersion
           echo pushing docker image to repo
         displayName: 'build and push rr-app-server'
 
