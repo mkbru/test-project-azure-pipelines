@@ -26,7 +26,7 @@ stages:
     steps:
 # Create a variable
     - bash: |
-        echo "##vso[task.setvariable variable=sauce]git rev-parse --short HEAD"
+        echo `##vso[task.setvariable variable=sauce]git rev-parse --short HEAD`
 
     # Use the variable
     # "$(sauce)" is replaced by the contents of the `sauce` variable by Azure Pipelines
