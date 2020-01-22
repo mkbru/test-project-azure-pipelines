@@ -3,8 +3,9 @@
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
 
-trigger:
-- master
+#trigger:
+#- master 
+
 
 pool:
   vmImage: 'ubuntu-latest'
@@ -17,14 +18,42 @@ variables:
 - name: helmConfigName
   value: $(kubernetesNamespace)-$(regionCode)-values
 
+stages:
+- stage: build and push containers
 
-steps:
+  jobs:
+  - job: buildAndPushRRAppServer
+    steps:
+    - bash: |
+        echo dockerHubRepositoryName = $(dockerHubRepositoryName)
+        git rev-parse --short HEAD
+        echo building docker image
+        echo pushing docker image to repo
+      displayName: 'build and push rr-app-server'
 
-- bash: |
-    echo dockerHubRepositoryName $(dockerHubRepositoryName)
-    echo helmRepository $(helmRepository)
-    echo helmGitCredentials $(helmGitCredentials)
-    echo dockerRegistry $(dockerRegistry)
-    echo helmConfigName $(helmConfigName)
-  displayName: 'var tests'
+  - job: buildAndPushRRAdminCMS
+    steps:
+    - bash: |
+        echo dockerHubRepositoryName = $(dockerHubRepositoryName)
+        git rev-parse --short HEAD
+        echo building docker image
+        echo pushing docker image to repo
+      displayName: 'build and push rr-admin-cms'
 
+  - job: buildAndPushRRCloudNativeWeb
+    steps:
+    - bash: |
+        echo dockerHubRepositoryName = $(dockerHubRepositoryName)
+        git rev-parse --short HEAD
+        echo building docker image
+        echo pushing docker image to repo
+      displayName: 'build and push rr-cloud-native-web'
+
+  - job: buildAndPushRRContentLayer
+    steps:
+    - bash: |
+        echo dockerHubRepositoryName = $(dockerHubRepositoryName)
+        git rev-parse --short HEAD
+        echo building docker image
+        echo pushing docker image to repo
+      displayName: 'build and push rr-content-layer'
