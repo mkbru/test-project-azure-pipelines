@@ -10,12 +10,22 @@ pool:
   vmImage: 'ubuntu-latest'
 
 variables:
-- group: test-var-group
+- group: dev-cu-vars
+- group: common-pipeline-vars
+- name: kubernetesNamespace
+  value: development
+- name: helmConfigName
+  value: $(kubernetesNamespace)-$(regionCode)-values
 
 steps:
+
 - bash: |
-    echo $(env)
-  displayName: 'var testing'
+    echo dockerHubRepositoryName -> $(dockerHubRepositoryName)
+    echo helmRepository -> $(helmRepository)
+    echo helmGitCredentials -> $(helmGitCredentials)
+    echo dockerRegistry -> $(dockerRegistry)
+    echo helmConfigName -> $(helmConfigName)
+  displayName: 'var tests'
 
 - script: echo Hello, world!
   displayName: 'Run a one-line script'
