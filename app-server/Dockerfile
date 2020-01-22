@@ -1,1 +1,4 @@
-i am a dockerfile
+
+FROM busybox
+COPY ./my-static-binary /my-static-binary
+CMD ["/my-static-binary"]
