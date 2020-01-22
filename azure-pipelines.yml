@@ -29,12 +29,13 @@ stages:
           git rev-parse --short HEAD
           echo building image $imageVersion
           echo pushing docker image to repo
+          ls
       - task: Docker@2
         inputs:
           containerRegistry: 'rr-dockerhub'
           repository: 'rotorooter/rr-app-server'
           command: 'build'
-          Dockerfile: 'rr-app-server/Dockerfile'
+          Dockerfile: '**/rr-app-server/Dockerfile'
           tags: '$(Build.SourceVersion)'
 
         displayName: 'build and push rr-app-server'
