@@ -10,28 +10,11 @@ pool:
   vmImage: 'ubuntu-latest'
 
 variables:
-    baseImageVersion: "2.0.0"
-    environment: "dev" 
-    regionCode: 'cu'  
-
-    dockerHubRepositoryName: rotorooter
-
-    kubernetesNamespace: development
-
-    helmRepository: https://github.com/jpaynerrsc/rotorooter-infrastructure-
-    helmGitCredentials:  roto-rooter-git-hub-account
-    helmCredentials: config_dev_$(regionCode)
-
-    helmConfigName: $(kubernetesNamespace)-$(regionCode)-values
-
-    dockerRegistry: https://registry.hub.docker.com
-
-    imageVersion: 
+- group: test-var-group
 
 steps:
 - bash: |
-    echo $(helmRepositoryName)
-    echo $(helmConfigName)
+    echo $(env)
   displayName: 'var testing'
 
 - script: echo Hello, world!
