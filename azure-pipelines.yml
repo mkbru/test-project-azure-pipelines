@@ -22,14 +22,17 @@ stages:
 
   jobs:
   - job: buildAndPush
-    steps:
+    steps: 
+    - bash: 
+        sourceVersion=$(Build.SourceVersion)
+        commitHash=$(echo $imageVersion | cut -c1-8)
     - task: Docker@2
       inputs:
         containerRegistry: 'mkbru-dockerhub'
         repository: 'mkbru/app-server'
         command: 'buildAndPush'
         Dockerfile: '**/app-server/Dockerfile'
-        tags: '2.0.0-$(Build.SourceVersion)'
+        tags: '2.0.0-$commitHash-$(environment)'
 
   # jobs:    
   #   - job: buildAndPushRRAppServer
