@@ -20,45 +20,56 @@ variables:
 stages:
 - stage: buildAndPushContainers
 
-  jobs:    
-    - job: buildAndPushRRAppServer
-      steps:       
-      - task: Docker@2
-        inputs:
-          containerRegistry: 'rr-dockerhub'
-          repository: 'rotorooter/rr-app-server'
-          command: 'build'
-          Dockerfile: '**/rr-app-server/Dockerfile'
-          tags: '$(Build.SourceVersion)'
+  jobs:
+  - job: buildAndPush
+    steps:
+    - task: Docker@2
+      inputs:
+        containerRegistry: 'mkbru-dockerhub'
+        repository: 'mkbru/app-server'
+        command: 'buildAndPush'
+        Dockerfile: '**/app-server/Dockerfile'
+        tags: '$(Build.SourceVersion)'
+
+  # jobs:    
+  #   - job: buildAndPushRRAppServer
+  #     steps:       
+  #     - task: Docker@2
+  #       inputs:
+  #         containerRegistry: 'rr-dockerhub'
+  #         repository: 'rotorooter/rr-app-server'
+  #         command: 'build'
+  #         Dockerfile: '**/rr-app-server/Dockerfile'
+  #         tags: '$(Build.SourceVersion)'
 
 
-    - job: buildAndPushRRAdminCMS
-      steps:
-      - task: Docker@2
-        inputs:
-          containerRegistry: 'rr-dockerhub'
-          repository: 'rotorooter/rr-admin-cms'
-          command: 'build'
-          Dockerfile: '**/rr-admin-cms/Dockerfile'
-          tags: '$(Build.SourceVersion)'
+  #   - job: buildAndPushRRAdminCMS
+  #     steps:
+  #     - task: Docker@2
+  #       inputs:
+  #         containerRegistry: 'rr-dockerhub'
+  #         repository: 'rotorooter/rr-admin-cms'
+  #         command: 'build'
+  #         Dockerfile: '**/rr-admin-cms/Dockerfile'
+  #         tags: '$(Build.SourceVersion)'
 
 
-    - job: buildAndPushRRCloudNativeWeb
-      steps:
-      - task: Docker@2
-        inputs:
-          containerRegistry: 'rr-dockerhub'
-          repository: 'rotorooter/rr-cloud-native-web'
-          command: 'build'
-          Dockerfile: '**/rr-cloud-native-web/Dockerfile'
-          tags: '$(Build.SourceVersion)'
+  #   - job: buildAndPushRRCloudNativeWeb
+  #     steps:
+  #     - task: Docker@2
+  #       inputs:
+  #         containerRegistry: 'rr-dockerhub'
+  #         repository: 'rotorooter/rr-cloud-native-web'
+  #         command: 'build'
+  #         Dockerfile: '**/rr-cloud-native-web/Dockerfile'
+  #         tags: '$(Build.SourceVersion)'
 
-    - job: buildAndPushRRContentLayer
-      steps:
-      - task: Docker@2
-        inputs:
-          containerRegistry: 'rr-dockerhub'
-          repository: 'rotorooter/rr-content-layer'
-          command: 'build'
-          Dockerfile: '**/rr-content-layer/Dockerfile'
-          tags: '$(Build.SourceVersion)'
+  #   - job: buildAndPushRRContentLayer
+  #     steps:
+  #     - task: Docker@2
+  #       inputs:
+  #         containerRegistry: 'rr-dockerhub'
+  #         repository: 'rotorooter/rr-content-layer'
+  #         command: 'build'
+  #         Dockerfile: '**/rr-content-layer/Dockerfile'
+  #         tags: '$(Build.SourceVersion)'
