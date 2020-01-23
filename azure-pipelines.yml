@@ -16,6 +16,8 @@ variables:
   value: development
 - name: helmConfigName
   value: $(kubernetesNamespace)-$(regionCode)-values
+- name: commitHash
+  value: 
 
 stages:
 - stage: buildAndPushContainers
@@ -25,14 +27,16 @@ stages:
     steps: 
     - bash: 
         sourceVersion=$(Build.SourceVersion)
-        commitHash=$(baseImageVersion)-$(echo $imageVersion | cut -c1-2)-$(environment)
+        $(commitHash)=$(baseImageVersion)-$(echo $imageVersion | cut -c1-2)-$(environment)
     - task: Docker@2
       inputs:
         containerRegistry: 'mkbru-dockerhub'
         repository: 'mkbru/app-server'
         command: 'buildAndPush'
         Dockerfile: '**/app-server/Dockerfile'
-        tags: $commitHash
+        tags: '$(commitHash)'
+    - script:
+          echo hello
 
   # jobs:    
   #   - job: buildAndPushRRAppServer
