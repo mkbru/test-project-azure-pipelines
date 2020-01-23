@@ -29,7 +29,7 @@ stages:
         repository: 'mkbru/app-server'
         command: 'buildAndPush'
         Dockerfile: '**/app-server/Dockerfile'
-        tags: '$(Build.SourceVersion)'
+        tags: '2.0.0-$(Build.SourceVersion)'
 
   # jobs:    
   #   - job: buildAndPushRRAppServer
