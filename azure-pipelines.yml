@@ -25,7 +25,7 @@ stages:
     steps: 
     # - bash: 
     #     sourceVersion=$(Build.SourceVersion)
-    #     $(commitHash)=$(baseImageVersion)-$(echo $imageVersion | cut -c1-2)-$(environment)
+    #     commitHash=$(baseImageVersion)-$(echo $imageVersion | cut -c1-2)-$(environment)
     - task: Docker@2
       inputs:
         containerRegistry: 'mkbru-dockerhub'
